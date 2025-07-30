@@ -49,3 +49,20 @@ The attacker changed a letter into a number to make the username look like the r
 **Task 5** : 
 **What is the command used to add a backdoor user from a remote computer?**
 
+We already know the backdoor username, so we use a search with:  
+`CommandLine=*backdoorusername*`
+
+This gives us 6 events. In the `CommandLine` field on the left panel, we see 3 different values.
+
+After a quick search on Google, we learn that **WMIC** can be used to connect to a remote computer and run commands.
+
+The command using **WMIC** is the correct answer.
+
+**Task 6** : 
+**How many times was the login attempt from the backdoor user observed during the investigation?**
+
+
+We can search using Windows Event IDs `4624` and `4625`, combined with the `backdoorusername` to check how many times login attempts were made.
+
+Another method is to search for the username directly in the search bar.  
+Then, in the left panel under the field `Category`, if there are login events, we will see the value `Logon`.
