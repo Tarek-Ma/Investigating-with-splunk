@@ -66,3 +66,19 @@ We can search using Windows Event IDs `4624` and `4625`, combined with the `back
 
 Another method is to search for the username directly in the search bar.  
 Then, in the left panel under the field `Category`, if there are login events, we will see the value `Logon`.
+
+**Task 7** : 
+**What is the name of the infected host on which suspicious Powershell commands were executed?**
+
+We can filter with event ID `4103` and `4104` which shows **Powershell module logging** and **Powershell script block logging**
+In the Hostname field on the left panel, we see only 1 result, which is the name of the infested host.
+
+**Task 8** :
+**PowerShell logging is enabled on this device. How many events were logged for the malicious PowerShell execution?**
+
+We can see the answer in the previous task
+
+**Task 9** : 
+**An encoded Powershell script from the infected host initiated a web request. What is the full URL?**
+
+In the `Payload` field in the left pannel we see interesting values like : `/admin/get.php` `/news.php` `/login/process.php`. With the query `index=main EventID=4103 OR EventID=4104 *admin*` we find some results with the same encoded script, we decode it with Cyberchef -> Decode from **base64** then decode text in UTF16, we see a **path** with `/news.php` but the part before is also encoded in base64. We decode it with Cyberchef (base64 and decode text UTF16) and we get `http://10.10.10.5` so we have the full url ( combine with /news.php). The hint said that we have to defang it, we do it with Cyberchef too.
