@@ -16,10 +16,14 @@ SOC Analyst Johny has observed some anomalous behaviours in the logs of a few wi
 
  We just used the query `index=main` and the number of event will show
 
+---
+
+
  ### **Task 2** :
  **On one of the infected hosts, the adversary was successful in creating a backdoor user. What is the new username?**
+ 
 <a href="https://i.postimg.cc/Xqc1h0QL/capture2.png" target="_blank">
-  <img src="https://i.postimg.cc/Xqc1h0QL/capture2.png" width="500"/>
+  <img src="https://i.postimg.cc/Xqc1h0QL/capture2.png" width="450"/>
 </a>
 
  The Event ID `4720` is used when a new user account is created.  
@@ -32,7 +36,10 @@ By analyzing the log, we can see key fields such as:
 
 Under the **New Account** section we find `Account Name`, which contains the answer to the question.
 
-**Task 3** : 
+---
+
+
+### **Task 3** : 
 **On the same host, a registry key was also updated regarding the new backdoor user. What is the full path of that registry key?**
 
 I first tried to search with Windows Event ID `4657`, which is normally used to detect registry changes. But i found any result.
@@ -43,9 +50,21 @@ So here, we use **Sysmon logs** instead.
 Since we already know the `Hostname` from the previous task, i added it to the search
 
 The result gave me **10 events**.  
+
+<a href="https://i.postimg.cc/JnchzPxn/capture3.png"  target="_blank">
+  <img src="https://i.postimg.cc/JnchzPxn/capture3.png" with="450"/>
+</a>  
+
 Looking at the `TargetObject` field in the left panel, I found the **full path of the registry key** linked to the username of the previous task.
 
-**Task 4** :
+<a href="https://i.postimg.cc/Kzc6tfF4/capture4.png"  target="_blank">
+  <img src="https://i.postimg.cc/Kzc6tfF4/capture4.png" with="450"/>
+</a> 
+
+---
+
+
+### **Task 4** :
 **Examine the logs and identify the user that the adversary was trying to impersonate.**
 
 In the `User` field in the left-hand panel, we see two users: `James` and `Alberto`.  
