@@ -1,4 +1,6 @@
 # Investigating-with-splunk
+🔗 [Web version in Github Pages](https://tarek-ma.github.io/Investigating-with-splunk/)
+
 SOC Level 1 incident investigation with Splunk logs on TryHackMe room.
 
 ## Introduction
