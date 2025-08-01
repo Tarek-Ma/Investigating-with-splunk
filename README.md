@@ -5,19 +5,24 @@ SOC Level 1 incident investigation with Splunk logs on TryHackMe room.
 
 SOC Analyst Johny has observed some anomalous behaviours in the logs of a few windows machines. It looks like the adversary has access to some of these machines and successfully created some backdoor. His manager has asked him to pull those logs from suspected hosts and ingest them into Splunk for quick investigation. Our task as SOC Analyst is to examine the logs and identify the anomalies.
 
-## Investigation start
+## Walkthrough
 
  **Index**: All the required logs are ingested in the index **main**.
 
- **Task 1** :
- How many events were collected and Ingested in the index main?
+ ### **Task 1** :
+ **How many events were collected and Ingested in the index main?**
+ 
+ ![](https://i.postimg.cc/VvBX1syS/capture1.png)
 
- I just used the query " index=main " and the number of event will show
+ We just used the query `index=main` and the number of event will show
 
- **Task 2** :
+ ### **Task 2** :
  **On one of the infected hosts, the adversary was successful in creating a backdoor user. What is the new username?**
+<a href="https://i.postimg.cc/Xqc1h0QL/capture2.png" target="_blank">
+  <img src="https://i.postimg.cc/Xqc1h0QL/capture2.png" width="500"/>
+</a>
 
- The Event ID `4720` is triggered when a new user account is created.  
+ The Event ID `4720` is used when a new user account is created.  
 Using this query, we get a single result.  
 By analyzing the log, we can see key fields such as:
 
